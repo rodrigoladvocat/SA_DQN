@@ -21,7 +21,7 @@
 		"act_epsilon_decay": 1500000,
 		"act_epsilon_method": "linear",
 		"act_epsilon_decay_zero": true,
-		"num_frames": 6000000,
+		"num_frames": 600000,
 		"env_params": {"frame_stack": false, "color_image": false, "central_crop": true},
 		"batch_size": 32,
 		"gamma": 0.99,	
@@ -52,7 +52,7 @@
 	"test_config":{
 		"load_model_path": "",
 		"log_name": "test.log",
-		"num_episodes": 50,
+		"num_episodes": 25,
 		"max_frames_per_episode": 15000,
 		"save_frames": false,
 		"print_frame": 100,
