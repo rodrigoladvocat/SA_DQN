@@ -21,7 +21,7 @@
 		"act_epsilon_decay": 100000,
 		"act_epsilon_method": "linear",
 		"act_epsilon_decay_zero": true,
-		"num_frames": 600000,
+		"num_frames": 350000,
 		"env_params": {"frame_stack": false, "color_image": false, "central_crop": true},
 		"batch_size": 32,
 		"gamma": 0.99,	
@@ -44,9 +44,9 @@
 		"start_epsilon": 0.0,
 		"epsilon": 0.00392,
 		"schedule_start": 100000,
-		"schedule_length": 320000,
+		"schedule_length": 200000,
 		"schedule_type": "smoothed",
-		"mini_test": 100000,
+		"mini_test": 50000,
 		"kappa": 0.005
 	},
 	"test_config":{
