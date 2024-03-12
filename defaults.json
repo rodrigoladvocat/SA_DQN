@@ -25,7 +25,7 @@
 		"env_params": {"frame_stack": false, "color_image": false, "central_crop": true},
 		"batch_size": 32,
 		"gamma": 0.99,	
-		"lr": 0.0000625,
+		"lr": 0.0002625,
 		"grad_clip": -1,
 		"natural_loss_fn": "huber",
 		"adam_eps": 0.00015,
