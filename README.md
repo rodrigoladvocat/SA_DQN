@@ -1,36 +1,4 @@
 # SA-DQN Reference Implementation: State-adversarial DQN for robust deep reinforcement learning
-
-This repository contains a reference implementation for State-Adversarial Deep
-Q Networks (SA-DQN).  SA-DQN includes a theoretically principled (based on
-SA-MDP) regularizer to obtain a DQN agent robust to noises and adversarial
-perturbations on state observations. See our paper ["Robust Deep Reinforcement
-Learning against Adversarial Perturbations on State
-Observations"](https://arxiv.org/pdf/2003.08938) for more details. This paper has been accepted by **NeurIPS 2020** as a **spotlight** presentation.
-
-Our DQN implementation is mostly a proof of concept, and does not include many
-advanced training techniques like Rainbow or C51. It is based on an implement of [RL-Adventure](https://github.com/higgsfield/RL-Adventure). We use
-[auto_LiRPA](https://github.com/KaidiXu/auto_LiRPA) as a sub-module to compute
-convex relaxations of neural networks (which supports forward, backward mode
-perturbation analysis and interval bound propagation (IBP)).
-
-If you are looking for robust policy gradient algorithms for continous action
-space environments (e.g., agents for MuJoCo control tasks) please see our
-[SA-PPO](https://github.com/huanzhang12/SA_PPO) and [SA-DDPG](https://github.com/huanzhang12/SA_DDPG) repositories.
-
-## SA-DQN Demo
-
-We attack vanilla DQN and SA-DQN agents on 4 Atari games under untargeted
-projected gradient decent (PGD) attacks on the state observations (pixel inputs
-to the Q network). SA-DQN (right figure of each pair) achieves high rewards under
-attacks, where vanilla DQN has very low rewards.
-
-| ![Pong-attack-natural.gif](/gifs/Pong-attack-natural.gif) | ![Pong-attack-natural.gif](/gifs/Pong-attack-convex.gif) | ![RoadRunner-attack-natural.gif](/gifs/RoadRunner-attack-natural.gif) | ![RoadRunner-attack-natural.gif](/gifs/RoadRunner-attack-convex.gif) | 
-|:--:| :--:| :--:| :--:| 
-| **Pong**, *Vanilla DQN* <br> reward under attack: **-21** <br> (trained agent: right paddle) | **Pong**, *SA-DQN* <br> reward under attack: **21** <br> (trained agent: right paddle) |**RoadRunner**, *Vanilla DQN* <br> reward under attack: **0** |**RoadRunner**, *SA-DQN* <br> reward under attack: **49900** |
-| ![Freeway-attack-natural.gif](/gifs/Freeway-attack-natural.gif) | ![Freeway-attack-natural.gif](/gifs/Freeway-attack-convex.gif) | ![BankHeist-attack-natural.gif](/gifs/BankHeist-attack-natural.gif) | ![BankHeist-attack-natural.gif](/gifs/BankHeist-attack-convex.gif) | 
-| **Freeway**, *Vanilla DQN* <br> reward under attack: **0** <br> (trained agent: left chicken) | **Freeway**, *SA-DQN* <br> reward under attack: **30** <br> (trained agent: left chicken) | **BankHeist**, *Vanilla DQN* <br> reward under attack: **0** | **BankHeist**,  *SA-DQN* <br> reward under attack: **1240** |
-
-
 ## Setup
 
 First clone this repository and install necessary Python packages.
@@ -77,6 +45,20 @@ wget http://download.huan-zhang.com/models/robust-drl/dqn/sa-dqn-models.tar.gz
 tar xvf sa-dqn-models.tar.gz
 ```
 
+```
+# para atualizar a pasta auto_lirpa:
+
+# change the auto_lirpa/auto_lirpa/utils.py: from collections import Sequence => from collections.abc import Sequence
+
+# change the auto_lirpa/auto_lirpa/parse_graph.py: line 42 => attrs = {k: getattr(n, n.kindOf(k))(k) for k in n.attributeNames()}
+# change the auto_lirpa/auto_lirpa/parse_graph.py: line 141 change _optimize_trace to _optimize_graph
+```
+
+``` 
+#instalando gym atari
+
+!pip install gym[accept-rom-license]
+```
 
 
 In the `models` directory, we provided a few pretrain models which can be
